@@ -1,11 +1,11 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import FallingStars from "./components/FallingStars";
-import BackgroundMusic from "./components/BackgroundMusic";
+
+import Hero from "../components/Hero";
+import About from "../components/About";
+import Skills from "../components/Skills";
+import Projects from "../features/components/Projects";
+import Contact from "../components/Contact";
+import FallingStars from "../components/FallingStars";
+import BackgroundMusic from "../components/BackgroundMusic";
 
 export default function Home() {
   return (
@@ -14,7 +14,6 @@ export default function Home() {
         <FallingStars />
         <BackgroundMusic />
         <div className="relative z-10">
-          <Navbar />
 
           <main>
             <Hero />
