@@ -725,8 +725,16 @@
     margin-bottom: calc(var(--spacing) * 2);
   }
 
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
+  }
+
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
   }
 
   .mb-6 {
@@ -946,6 +954,10 @@
 
   .w-40 {
     width: calc(var(--spacing) * 40);
+  }
+
+  .w-48 {
+    width: calc(var(--spacing) * 48);
   }
 
   .w-80 {
@@ -1734,6 +1746,10 @@
     padding: calc(var(--spacing) * 7);
   }
 
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
+  }
+
   .p-10 {
     padding: calc(var(--spacing) * 10);
   }
@@ -2114,10 +2130,6 @@
     opacity: 0;
   }
 
-  .opacity-60 {
-    opacity: .6;
-  }
-
   .opacity-100 {
     opacity: 1;
   }
@@ -2378,6 +2390,16 @@
     border-width: 0;
   }
 
+  .file\:bg-blue-500\/10::file-selector-button {
+    background-color: #3080ff1a;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .file\:bg-blue-500\/10::file-selector-button {
+      background-color: color-mix(in oklab, var(--color-blue-500) 10%, transparent);
+    }
+  }
+
   .file\:bg-blue-600::file-selector-button {
     background-color: var(--color-blue-600);
   }
@@ -2398,6 +2420,15 @@
   .file\:font-medium::file-selector-button {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
+  }
+
+  .file\:font-semibold::file-selector-button {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .file\:text-blue-400::file-selector-button {
+    color: var(--color-blue-400);
   }
 
   .file\:text-white::file-selector-button {
@@ -2588,6 +2619,16 @@
 
     .hover\:file\:bg-blue-500:hover::file-selector-button {
       background-color: var(--color-blue-500);
+    }
+
+    .hover\:file\:bg-blue-500\/20:hover::file-selector-button {
+      background-color: #3080ff33;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:file\:bg-blue-500\/20:hover::file-selector-button {
+        background-color: color-mix(in oklab, var(--color-blue-500) 20%, transparent);
+      }
     }
   }
 
@@ -2883,6 +2924,10 @@
 
     .md\:-right-4 {
       right: calc(var(--spacing) * -4);
+    }
+
+    .md\:col-span-2 {
+      grid-column: span 2 / span 2;
     }
 
     .md\:mt-5 {

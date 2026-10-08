@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -20,16 +21,24 @@ export default function LoginPage() {
 
     const supabase = createClient();
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
+
 
     if (error) {
       setError(error.message);
       setLoading(false);
       return;
     }
+
+    console.log("LOGIN USER:", data.user);
+    console.log("LOGIN SESSION:", data.session);
+
+    const { data: currentSession } = await supabase.auth.getSession();
+
+    console.log("CURRENT SESSION AFTER LOGIN:", currentSession.session);
 
     router.push("/admin");
     router.refresh();
@@ -94,6 +103,13 @@ export default function LoginPage() {
           >
             {loading ? "Memproses..." : "Login"}
           </button>
+
+          <Link
+            href="/"
+            className="mt-4 block text-center text-sm text-gray-400 transition hover:text-white"
+          >
+            ← Kembali ke Portofolio
+          </Link>
         </form>
       </div>
     </main>

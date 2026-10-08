@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
@@ -10,6 +11,38 @@ type Project = {
   technologies: string[];
   features: string[];
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+
+  const { data: project } = await supabase
+    .from("project")
+    .select("title, description")
+    .eq("id", id)
+    .single();
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Azqal",
+      description: "Project yang dicari tidak ditemukan.",
+    };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      type: "article",
+    },
+  };
+}
 
 export default async function ProjectDetail({
   params,

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
@@ -37,9 +38,9 @@ export default function Projects() {
         technologies:
           typeof project.technologies === "string"
             ? project.technologies
-                .split(",")
-                .map((tech: string) => tech.trim())
-                .filter(Boolean)
+              .split(",")
+              .map((tech: string) => tech.trim())
+              .filter(Boolean)
             : [],
       }));
 
@@ -88,11 +89,10 @@ export default function Projects() {
               key={item}
               type="button"
               onClick={() => setFilter(item)}
-              className={`rounded-md border px-3 py-2 text-xs font-medium transition duration-300 sm:px-4 sm:text-sm ${
-                filter === item
+              className={`rounded-md border px-3 py-2 text-xs font-medium transition duration-300 sm:px-4 sm:text-sm ${filter === item
                   ? "border-blue-500 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.25)]"
                   : "border-white/10 bg-white/5 text-gray-400 hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-white"
-              }`}
+                }`}
             >
               {item === "all" ? "All Projects" : item}
             </button>
@@ -154,17 +154,19 @@ export default function Projects() {
                 href={`/projects/${project.id}`}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#080b11] transition duration-300 hover:-translate-y-2 hover:border-blue-500/30"
                 style={{
-                  animation: `float 4s ease-in-out ${
-                    index * 0.2
-                  }s infinite`,
+                  animation: `float 4s ease-in-out ${index * 0.2
+                    }s infinite`,
                 }}
               >
                 {/* IMAGE */}
+                {/* IMAGE */}
                 <div className="relative aspect-video overflow-hidden bg-gray-900">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-blue-500/0 transition duration-300 group-hover:bg-blue-500/5" />

@@ -9,9 +9,24 @@ import Navbar from "@/components/layout/Navbar";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "Azqal — Full Stack Developer",
+  metadataBase: new URL("https://portofolio-nsxh.vercel.app"),
+
+  title: {
+    default: "Azqal — Full Stack Developer",
+    template: "%s | Azqal",
+  },
+
   description:
     "Portfolio website of Azqal, a Full Stack Developer who builds modern web applications.",
+
+  openGraph: {
+    title: "Azqal — Full Stack Developer",
+    description:
+      "Portfolio website of Azqal, a Full Stack Developer who builds modern web applications.",
+    url: "https://portofolio-nsxh.vercel.app",
+    siteName: "Azqal Portfolio",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({
